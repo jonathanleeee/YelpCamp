@@ -8,6 +8,9 @@ app.set("view engine", "ejs");
 var campgrounds = [
      {name: "camp1", img: "https://farm8.staticflickr.com/7252/7626464792_3e68c2a6a5.jpg"},
      {name: "camp2", img: "https://farm7.staticflickr.com/6210/6090170567_6df55f8d83.jpg"},
+     {name: "camp3", img: "https://farm2.staticflickr.com/1255/767161131_39e0688cd2.jpg"},
+      {name: "camp1", img: "https://farm8.staticflickr.com/7252/7626464792_3e68c2a6a5.jpg"},
+     {name: "camp2", img: "https://farm7.staticflickr.com/6210/6090170567_6df55f8d83.jpg"},
      {name: "camp3", img: "https://farm2.staticflickr.com/1255/767161131_39e0688cd2.jpg"}
  ];
 
