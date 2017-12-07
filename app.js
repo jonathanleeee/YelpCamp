@@ -3,22 +3,24 @@ var express    = require("express"),
     bodyParser = require("body-parser"),
     mongoose   = require("mongoose");
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 //SCHEMA set up
 var campgroundSchema = new mongoose.Schema({
    name: String,
-   image: String
+   image: String,
+   description:  String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
 // Campground.create(
 // {
-//     name: "camp2",
-//     image: "https://farm7.staticflickr.com/6210/6090170567_6df55f8d83.jpg"
+//     name: "camp1",
+//     image: "https://farm7.staticflickr.com/6210/6090170567_6df55f8d83.jpg",
+//     description: "This is the description for camp1"
 // }, function(err, campground){
 //     if(err){
 //         console.log("you fuck up there is an err");
@@ -47,7 +49,7 @@ Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log(err);
         } else {
-            res.render("campgrounds", {campgrounds: allCampgrounds}); 
+            res.render("index", {campgrounds: allCampgrounds}); 
         }
     });    
 });
@@ -55,7 +57,8 @@ Campground.find({}, function(err, allCampgrounds){
 app.post("/campgrounds", function(req, res){
    var name = req.body.name;
    var image = req.body.image;
-   var newCampground = {name: name, image: image};
+   var desc = req.body.description;
+   var newCampground = {name: name, image: image, description: desc};
    
    Campground.create(newCampground, function(err, newlyCreated){
        //create new campground and save to DB
@@ -69,6 +72,19 @@ app.post("/campgrounds", function(req, res){
 
 app.get("/campgrounds/new", function(req, res){
    res.render("new");
+});
+
+// SHOW show more info about one campgroun
+app.get("/campgrounds/:id", function(req, res){
+    //find the campgrounds with provided ID
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("show", {campground: foundCampground});
+        }
+    });
+    //render show template with that campground
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
