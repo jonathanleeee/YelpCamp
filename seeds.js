@@ -6,17 +6,17 @@ var data = [
     {
        name: "Yosemite",
        image: "https://www.yosemite.com/wp-content/uploads/2016/04/Pines-campground.jpg",
-       description: "what's up what's up"
+       description: "The <address> element is updated to reset the browser default font-style from italic to normal. line-height is also now inherited, and margin-bottom: 1rem has been added. <address>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <br>."
     },
     {
        name: "Yosemite 2",
        image: "http://www.parkcamper.com/Yosemite-National-Park/Wawona-campground-yosemite.jpg",
-       description: "Whats up yosemite"
+       description: "The <address> element is updated to reset the browser default font-style from italic to normal. line-height is also now inherited, and margin-bottom: 1rem has been added. <address>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <br>."
     },
     {
        name: "Yosemite 3",
        image: "https://www.yosemite.com/wp-content/uploads/2016/04/upper-pines.png",
-       description: "What's up dawg"
+       description: "The <address> element is updated to reset the browser default font-style from italic to normal. line-height is also now inherited, and margin-bottom: 1rem has been added. <address>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <br>."
     }
 ];
 
