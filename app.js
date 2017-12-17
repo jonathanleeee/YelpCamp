@@ -11,6 +11,7 @@ var express    = require("express"),
     
 
 mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+mongoose.Promise = global.Promise; 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -29,6 +30,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req, res, next){
+   res.locals.currentUser = req.user;
+   next();
+});
+
 
 app.get("/", function(req, res){
    res.render("landing"); 
@@ -36,7 +42,7 @@ app.get("/", function(req, res){
 
 //INDEX - show all campgrounds
 app.get("/campgrounds", function(req, res){
-Campground.find({}, function(err, allCampgrounds){
+    Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log(err);
         } else {
