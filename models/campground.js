@@ -3,9 +3,12 @@ var mongoose = require("mongoose");
 //SCHEMA set up
 var campgroundSchema = new mongoose.Schema({
    name: String,
-   price: String, 
    image: String,
    description:  String,
+   price: Number,
+   location: String, 
+   lat: Number,
+   lng: Number,
    author: {
        id: {
            type: mongoose.Schema.Types.ObjectId,
