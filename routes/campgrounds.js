@@ -80,6 +80,7 @@ router.put("/:id", function(req, res){
     // find and update the correct campground
     Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
         if(err){
+            console.log(err);
             req.flash("error", err.message);
             res.redirect("back");
         } else {
